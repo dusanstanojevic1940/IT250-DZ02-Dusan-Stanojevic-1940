@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Make My Shit</title>
+	<meta name="description" content="Make My Shit Web Application"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- Loading Bootstrap -->
+	<link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+
+	<!-- Loading Font Awesome Icons -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<!--<link href="../css/font-awesome.min.css" rel="stylesheet">-->
+
+	<!-- Loading Drunken Parrot UI -->
+	<link href="../css/drunken-parrot.css" rel="stylesheet">
+	<link href="../css/demo.css" rel="stylesheet">
+
+	<!-- <link rel="shortcut icon" href="../images/favicon.ico"> -->
+
+	<!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+	<!--[if lt IE 9]>
+		<script src="../js/html5shiv.js"></script>
+	<![endif]-->
+	<link href="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/d004434a5ff76e7b97c8b07c01f34ca69e635d97/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<script src="../js/checkbox.js"></script>
+	<script src="../js/radio.js"></script>
+	<script src="../js/bootstrap-switch.js"></script>
+	<script src="../js/toolbar.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+	<script src="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/d004434a5ff76e7b97c8b07c01f34ca69e635d97/src/js/bootstrap-datetimepicker.js"></script>
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+</head>
+<body data-spy="scroll" data-target="#sidenav" data-offset="100">
+	
+	<div class="row d-nav" id="navbars">
+					
+		<nav class="navbar navbar-inverse" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2"><span class="fa fa-bars"></span></button>
+					<h1 style="color:white; padding-left:15px;  margin-left:15px">Manager</h1>
+				</div>
+
+				<div class="collapse navbar-collapse" id="navbar-collapse-2">
+					
+					<ul class="nav navbar-nav navbar-right" style="margin-top:7px;">
+						<li>
+							<a href="jobs.php">
+								<span class="fa fa-tasks hidden-sm"></span><span>  Jobs</span>
+							</a>
+						</li>
+						<li>
+							<a href="logout.php">
+								<span style="font-weight:100; color:#FFF">Log out</span>
+							</a>
+						</li>
+					</ul>
+				</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>
+
+	</div>
+	
+
+	<div class="container" id="addJob" >
+		<div class="row">
+			<div class="row">
+				<div class="col-md-10 col-lg-10" style="margin: auto; float: none;">
+					<form action="" method="POST" id="addS">
+						<div class="panel panel-default">
+							<!-- Default panel contents -->
+							<div class="panel-heading">Add Job</div>
+
+							<!-- Table -->
+							<div class="table" ng-app="myApp" ng-controller="formCont">
+									<div class="row">
+										<!--<img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/credit_card-128.png" ng-click="show=1">-->
+										<div class="col-md-3 text-center">
+											<i class="fa fa-line-chart" style="font-size: 8em" ng-click="show=1" ></i>
+										</div>
+										<div class="col-md-3 text-center">
+											<i class="fa fa-user" style="font-size: 8em" ng-click="show=2" ></i>
+										</div>
+										<div class="col-md-3 text-center">
+											<i class="fa fa-credit-card" style="font-size: 8em" ng-click="show=3" ></i>
+										</div>
+										<div class="col-md-3 text-center">
+											<i class="fa fa-bookmark-o" style="font-size: 8em" ng-click="show=4" ></i>
+										</div>
+									</div>
+									<div ng-if="show!=0">
+										<div ng-show="show==1">
+											<div class="ntr">
+												<div class="nth">Brand name</div>
+												<div class="ntd"><input type="text" class="form-control" required placeholder="Brand name" name="brand" ng-model="brand"/></div>
+											</div>
+										</div>
+										<div ng-show="show==1 || show==2 || show==3 || show==4">
+											<div class="ntr">
+												<div class="nth">Due date</div>
+												<div class="ntd">
+													<input type='text' name="due_date" class="form-control" id='datetimepicker4' ng-model="due_date" placeholder="Due date"/>
+												</div>
+												<script type="text/javascript">
+												$(function () {
+													$('#datetimepicker4').datetimepicker();
+												});
+												</script>
+											</div>
+										</div>
+										<div ng-show="show==1 || show==2 || show==3 || show==4">
+											<div class="ntr">
+												<div class="nth">Location</div>
+												<div class="ntd"><input type="text" class="form-control" required placeholder="location" name="location" ng-model="location"/></div>
+											</div>
+										</div>
+										<div ng-show="show==4">
+											<div class="ntr">
+												<div class="nth">Type of banner</div>
+												<div class="ntd"><input type="text" class="form-control" required placeholder="type_of_banner" name="type_of_banner" ng-model="type_of_banner"/></div>
+											</div>
+										</div>
+										<div ng-show="show==3">
+											<div class="ntr">
+												<div class="nth">T-shirt design</div>
+												<div class="ntd"><input type="text" class="form-control" required placeholder="tshirt_design" name="tshirt_design" ng-model="tshirt_design"/></div>
+											</div>
+										</div>
+										<div ng-show="show==3">
+											<div class="ntr">
+												<div class="nth">Size</div>
+												<div class="ntd"><input type="text" class="form-control" required placeholder="size" name="size" ng-model="size"/></div>
+											</div>
+										</div>
+										<div ng-show="show==2">
+											<div class="ntr">
+												<div class="nth">Do you already have a bussiness card?</div>
+												<div class="ntd"><input type="text" class="form-control" required placeholder="already_have_bc" name="already_have_bc" ng-model="already_have_bc"/></div>
+											</div>
+										</div>
+										<div ng-show="show==2">
+											<div class="ntr">
+												<div class="nth">Link to current card design</div>
+												<div class="ntd"><input type="text" class="form-control" required placeholder="link_to_curr_cd" name="link_to_curr_cd" ng-model="link_to_curr_cd"/></div>
+											</div>
+										</div>
+										<div ng-show="show==2">
+											<div class="ntr">
+												<div class="nth">Do you need any changes on your design?</div>
+												<div class="ntd"><input type="text" class="form-control" required placeholder="need_changes" name="need_changes" ng-model="need_changes"/></div>
+											</div>
+										</div>
+										<div ng-show="show==2">
+											<div class="ntr">
+												<div class="nth">Name</div>
+												<div class="ntd"><input type="text" class="form-control" required placeholder="name" name="name" ng-model="name"/></div>
+											</div>
+										</div>
+										<div ng-show="show==2">
+											<div class="ntr">
+												<div class="nth">Title</div>
+												<div class="ntd"><input type="text" class="form-control" required placeholder="title" name="title" ng-model="title"/></div>
+											</div>
+										</div>
+										<div ng-show="show==2">
+											<div class="ntr">
+												<div class="nth">Phone number</div>
+												<div class="ntd"><input type="text" class="form-control" required placeholder="phone" name="phone" ng-model="phone"/></div>
+											</div>
+										</div>
+										<div ng-show="show==2">
+											<div class="ntr">
+												<div class="nth">Email</div>
+												<div class="ntd"><input type="text" class="form-control" required placeholder="email" name="email" ng-model="email"/></div>
+											</div>
+										</div>
+										<div ng-show="show==2">
+											<div class="ntr">
+												<div class="nth">Link to your high quality photo</div>
+												<div class="ntd"><input type="text" class="form-control" required placeholder="link_to_hd_photo" name="link_to_hd_photo" ng-model="link_to_hd_photo"/></div>
+											</div>
+										</div>
+										<div ng-show="show==2 || show==3">
+											<div class="ntr">
+												<div class="nth">How many</div>
+												<div class="ntd"><input type="text" class="form-control" required placeholder="how_many" name="how_many" ng-model="how_many"/></div>
+											</div>
+										</div>
+										<div ng-show="show==3">
+											<div class="ntr">
+												<div class="nth">Style of tshirt</div>
+												<div class="ntd"><input type="text" class="form-control" required placeholder="style_of_tshirt" name="style_of_tshirt" ng-model="style_of_tshirt"/></div>
+											</div>
+										</div>
+										<div ng-show="show==1">
+											<div class="ntr">
+												<div class="nth">Type of presentation</div>
+												<div class="ntd">
+												<select name="type_of_presentation" ng-model="type_of_presentation" class="form-control">
+												       	<option>Strategic/Investor Presentation</option>
+       													<option>Brand Presentation</option>
+       													<option>Video Strategy Presentation</option>
+       													<option>Video Style Guide</option>
+       													<option>Video Treatment</option>
+       													<option>Custom</option>
+												</select>
+												</div>
+											</div>
+										</div>
+										<div ng-show="show==1">
+											<div class="ntr">
+												<div class="nth">Do you want custom graphics</div>
+												<div class="ntd">
+													<input type="checkbox" name="custom_graphics" ng-model="custom_graphics"/></div>
+											</div>
+										</div>
+										<div ng-show="show==1">
+											<div class="ntr">
+												<div class="nth">Do you have a folder?</div>
+												<div class="ntd"><input type="checkbox" ng-model="hasFolder"/></div>
+											</div>
+											<div ng-show="hasFolder">
+												<div class="ntr">
+													<div class="nth">Folder link</div>
+													<div class="ntd"><input type="text" class="form-control" required placeholder="folder" name="folder" ng-model="folder"/></div>
+												</div>
+											</div>
+										</div>
+										<div ng-show="show==1">
+											<div class="ntr">
+												<div class="nth">Did you add all images?</div>
+												<div class="ntd"><input type="checkbox" name="images_added" ng-model="images_added"/></div>
+											</div>
+										</div>
+										<div ng-show="show==1">
+											<div class="ntr">
+												<div class="nth">Have you added all the content to the folder?</div>
+												<div class="ntd">
+													<input type="checkbox" name="presentation_content" ng-model="presentation_content"/>
+												</div>
+											</div>
+										</div>
+
+
+
+										
+										<input type="hidden" name="instructions" class="form-control" form="addS">
+										
+									</div>
+
+									<div ng-show="">
+										
+									</div>
+
+									<!--<div ng-if="shouldSubmit == 0">
+										<input type="submit" class="btn btn-success pull-right" style="margin-top:15px"/>
+									</div>-->
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<!-- Bootstrap core JavaScript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="../js/application.js"></script>
+	<script type="text/javascript">
+		var app = angular.module('myApp', []);
+		app.controller('formCont', function($scope) {
+		    $scope.show= 0;
+		    $scope.block= 0;
+		    $scope.shouldSubmit= 0;
+		    $scope.brand= "";
+		    $scope.due_date= "";
+		    $scope.location= "";
+		    $scope.type_of_banner= "";
+		    $scope.tshirt_design= "";
+		    $scope.size= "";
+		    $scope.already_have_bc= "";
+		    $scope.link_to_curr_cd= "";
+		    $scope.need_changes= "";
+		    $scope.name= "";
+		    $scope.title= "";
+		    $scope.phone= "";
+		    $scope.email= "";
+		    $scope.link_to_hd_photo= "";
+		    $scope.how_many= "";
+		    $scope.style_of_tshirt= "";
+		    $scope.type_of_presentation= "";
+		    $scope.custom_graphics= "";
+		    $scope.folder= "";
+		    $scope.hasFolder= "";
+		    $scope.images_added= "";
+		    $scope.presentation_content= "";
+		});
+	</script>
+	</body>
+</html>

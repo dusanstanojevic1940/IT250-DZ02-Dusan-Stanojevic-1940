@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Make My Shit</title>
+	<meta name="description" content="Make My Shit Web Application"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- Loading Bootstrap -->
+	<link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+
+	<!-- Loading Font Awesome Icons -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<!--<link href="../css/font-awesome.min.css" rel="stylesheet">-->
+
+	<!-- Loading Drunken Parrot UI -->
+	<link href="../css/drunken-parrot.css" rel="stylesheet">
+	<link href="../css/demo.css" rel="stylesheet">
+
+	<!-- <link rel="shortcut icon" href="../images/favicon.ico"> -->
+
+	<!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+	<!--[if lt IE 9]>
+		<script src="../js/html5shiv.js"></script>
+	<![endif]-->
+	<link href="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/d004434a5ff76e7b97c8b07c01f34ca69e635d97/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<script src="../js/checkbox.js"></script>
+	<script src="../js/radio.js"></script>
+	<script src="../js/bootstrap-switch.js"></script>
+	<script src="../js/toolbar.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+	<script src="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/d004434a5ff76e7b97c8b07c01f34ca69e635d97/src/js/bootstrap-datetimepicker.js"></script>
+	<script src="../js/application.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	<script src="http://gregpike.net/demos/bootstrap-file-input/bootstrap.file-input.js"></script>
+	<style type="text/css">
+		.import > .fa { color: #FFC374 }
+	</style>
+</head>
+<body data-spy="scroll" data-target="#sidenav" data-offset="100">
+	
+	<div class="row d-nav" id="navbars">
+					
+		<nav class="navbar navbar-inverse" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2"><span class="fa fa-bars"></span></button>
+					<h1 style="color:white; padding-left:15px;  margin-left:15px">Manager</h1>
+				</div>
+
+				<div class="collapse navbar-collapse" id="navbar-collapse-2">
+					
+					<ul class="nav navbar-nav navbar-right" style="margin-top:7px;">
+						<li>
+							<a href="jobs.php">
+								<span class="fa fa-tasks hidden-sm"></span><span>  Jobs</span>
+							</a>
+						</li>
+						<li>
+							<a href="logout.php">
+								<span style="font-weight:100; color:#FFF">Log out</span>
+							</a>
+						</li>
+					</ul>
+				</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>
+
+	</div>
+	
+
+	<div class="container" id="addJob" >
+			<div class="row">
+
+				<div class="col-md-8 col-lg-8 pull-left">
+					
+						<div class="panel panel-default">
+							<!-- Default panel contents -->
+							<div class="panel-heading">Nick Presentation</div>
+
+							<!-- Table -->
+							<div class="table">
+									
+											
+												<div class="ntr">
+													<div class="ntd">Price</div>
+												</div>
+												<div class="ntr">
+													<div class="ntd">Freelancer</div>
+												</div>
+												<div class="ntr">
+													<div class="ntd">Due date</div>
+												</div>
+												<div class="ntr">
+													<div class="ntd">Location</div>
+												</div>
+												<div class="ntr">
+													<div class="ntd">Order for</div>
+												</div>
+												<div class="ntr">
+													<div class="nth">What type of business card is it?</div>
+													<div class="ntd row text-center" style="padding:5px; margin:0px;">
+														<div class="thumbnail thumbnail-caption col-md-4 col-sm-6" style="padding:5px"> 
+													      	<img src="../images/thumbnail-large-01.jpg" alt="100%x180" style="width: 100%; display: block;">
+													      	<div class="caption">
+													      		<p>Demo one</p>
+													      		<p>
+														        	<a href="#" class="btn btn-primary btn-sm" role="button" style="margin-top: 10px; width:90%">Download</a>
+														        	<div href="#" class="btn btn-primary btn-sm" role="button" style="margin-top: 10px; width:90%">Instructions</div>
+														        </p>
+													      	</div>
+													    </div>
+													    <div class="thumbnail thumbnail-caption col-md-4 col-sm-6" style="padding:5px"> 
+													      	<img src="../images/thumbnail-large-01.jpg" alt="100%x180" style="width: 100%; display: block;">
+													      	<div class="caption">
+													      		<p>Demo two</p>
+													      		<p>
+														        	<a href="#" class="btn btn-primary btn-sm" role="button" style="margin-top: 10px; width:90%">Download</a>
+														        	<div href="#" class="btn btn-primary btn-sm" role="button" style="margin-top: 10px; width:90%" onclick="setInstructions('instructions')">Instructions</div>
+														        </p>
+													      	</div>
+													    </div>
+													</div>
+												</div>
+								</div>		
+						</div>					
+				</div>
+				<div class="col-md-4 col-lg-4 pull-right" style="margin: auto; float: none;">
+					<div class="panel panel-default">
+						<!-- Default panel contents -->
+						<div class="panel-heading">Instructions</div>
+
+						<!-- Table -->
+						<div class="table" ng-app="myApp" ng-controller="formCont">
+								<div class="ntr">
+									<div class="ntd" id="instructions">Do you have a 90 seconds business cards</div>
+								</div>
+						</div>		
+					</div>	
+				</div>
+			</div>
+		</div>
+	<!-- Bootstrap core JavaScript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="../js/application.js"></script>
+	<script type="text/javascript">
+		function setInstructions(text) {
+			$("#instructions").text(text);
+		}
+	</script>
+	
+	
+	</body>
+</html>

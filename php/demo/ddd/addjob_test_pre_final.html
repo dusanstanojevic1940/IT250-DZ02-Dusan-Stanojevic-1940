@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Make My Shit</title>
+	<meta name="description" content="Make My Shit Web Application"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<!-- Loading Bootstrap -->
+	<link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
+
+	<!-- Loading Font Awesome Icons -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<!--<link href="../css/font-awesome.min.css" rel="stylesheet">-->
+
+	<!-- Loading Drunken Parrot UI -->
+	<link href="../css/drunken-parrot.css" rel="stylesheet">
+	<link href="../css/demo.css" rel="stylesheet">
+
+	<!-- <link rel="shortcut icon" href="../images/favicon.ico"> -->
+
+	<!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+	<!--[if lt IE 9]>
+		<script src="../js/html5shiv.js"></script>
+	<![endif]-->
+	<link href="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/d004434a5ff76e7b97c8b07c01f34ca69e635d97/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<script src="../js/checkbox.js"></script>
+	<script src="../js/radio.js"></script>
+	<script src="../js/bootstrap-switch.js"></script>
+	<script src="../js/toolbar.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+	<script src="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/d004434a5ff76e7b97c8b07c01f34ca69e635d97/src/js/bootstrap-datetimepicker.js"></script>
+	<script src="../js/application.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	<script src="http://gregpike.net/demos/bootstrap-file-input/bootstrap.file-input.js"></script>
+	<style type="text/css">
+		.import > .fa { color: #FFC374 }
+	</style>
+</head>
+<body data-spy="scroll" data-target="#sidenav" data-offset="100">
+	
+	<div class="row d-nav" id="navbars">
+					
+		<nav class="navbar navbar-inverse" role="navigation">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2"><span class="fa fa-bars"></span></button>
+					<h1 style="color:white; padding-left:15px;  margin-left:15px">Manager</h1>
+				</div>
+
+				<div class="collapse navbar-collapse" id="navbar-collapse-2">
+					
+					<ul class="nav navbar-nav navbar-right" style="margin-top:7px;">
+						<li>
+							<a href="jobs.php">
+								<span class="fa fa-tasks hidden-sm"></span><span>  Jobs</span>
+							</a>
+						</li>
+						<li>
+							<a href="logout.php">
+								<span style="font-weight:100; color:#FFF">Log out</span>
+							</a>
+						</li>
+					</ul>
+				</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>
+
+	</div>
+	
+
+	<div class="container" id="addJob" >
+		<div class="row">
+			<div class="row">
+				<div class="col-md-10 col-lg-10" style="margin: auto; float: none;">
+					
+						<div class="panel panel-default">
+							<!-- Default panel contents -->
+							<div class="panel-heading">Add Job</div>
+
+							<!-- Table -->
+							<div class="table" ng-app="myApp" ng-controller="formCont">
+									<div class="row">
+										<!--<img src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/credit_card-128.png" ng-click="show=1">-->
+										<div class="col-md-4 col-xs-4 text-center import">
+											<i class="fa fa-line-chart" style="font-size: 6.7em" ng-click="show=1" ></i>
+										</div>
+										<div class="col-md-4 col-xs-4 text-center import">
+											<i class="fa fa-user" style="font-size: 6.7em" ng-click="show=2" ></i>
+										</div>
+										<div class="col-md-4 col-xs-4 text-center import">
+											<i class="fa fa-credit-card" style="font-size: 6.7em" ng-click="show=3" ></i>
+										</div>
+									</div>
+									<div ng-if="show!=0">
+										<div ng-show="show==1">
+											<form action="" method="POST" id="addS">
+												<div class="ntr">
+													<div class="nth">What brand is it for</div>
+													<div class="ntd"><input type="text" class="form-control" required placeholder="location" name="location" ng-model="location"/></div>
+												</div>
+												<div class="ntr">
+													<div class="nth">Due date</div>
+													<div class="ntd" style="position:relative">
+														<input type='text' name="due_date" class="form-control datetimepicker" id='datetimepicker4' ng-model="due_date" placeholder="Due date"/>
+													</div>
+													<script type="text/javascript">
+														$(function () {
+															$('.datetimepicker').datetimepicker();
+														});
+													</script>
+												</div>
+												<div class="ntr">
+													<div class="nth">Presentation</div>
+													<div class="ntd">
+														<select class="form-control">
+															<option>Presentation type 1</option>
+															<option>Presentation type 2</option>
+															<option>Presentation type 3</option>
+														</select>
+													</div>
+												</div>
+												<div class="ntr">
+													<div class="nth">Is there custom graphics</div>
+													<div class="ntd"><input type="checkbox" ng-model="hasFolder"/></div>
+												</div>
+												<div ng-show="hasFolder">
+													<div class="ntr">
+														<div class="nth">Images link</div>
+														<div class="ntd"><input type="text" class="form-control" required placeholder="folder" name="folder" ng-model="folder"/></div>
+													</div>
+												</div>
+												<div class="ntr">
+													<div class="nth">Content link</div>
+													<div class="ntd"><input type="text" class="form-control" required placeholder="location" name="location" ng-model="location"/></div>
+												</div>
+												<div class="ntr">
+													<input type="submit" class="btn btn-success btn-md" style="width:100%"/>
+												</div>
+											</form>
+										</div>
+										<div ng-show="show==2">
+											<form action="" method="POST" id="addS">
+												<div class="ntr">
+													<div class="nth">Due date</div>
+													<div class="ntd" style="position:relative">
+														<input type='text' name="due_date" class="form-control datetimepicker" id='datetimepicker4' ng-model="due_date" placeholder="Due date"/>
+													</div>
+													<script type="text/javascript">
+														$(function () {
+															$('.datetimepicker').datetimepicker();
+														});
+													</script>
+												</div>
+												<div class="ntr">
+													<div class="nth">Location</div>
+													<div class="ntd">
+														<select class="form-control">
+															<option>Auckland</option>
+															<option>London</option>
+															<option>Singapore</option>
+															<option>Sydney</option>
+															<option>Tokyo</option>
+														</select>
+													</div>
+												</div>
+												<div class="ntr">
+													<div class="nth">T-shirt design</div>
+													<div class="ntd">
+														<select class="form-control">
+															<option>Design type 1</option>
+															<option>Design type 2</option>
+															<option>Design type 3</option>
+														</select>
+													</div>
+												</div>
+												<div class="ntr">
+													<div class="nth">What size</div>
+													<div class="ntd"><input type="text" class="form-control" required placeholder="location" name="location" ng-model="location"/></div>
+												</div>
+												<div class="ntr">
+													<div class="nth">How many do you need</div>
+													<div class="ntd"><input type="text" class="form-control" required placeholder="location" name="location" ng-model="location"/></div>
+												</div>
+												<div class="ntr">
+													<div class="nth">What style</div>
+													<div class="ntd">
+														<select class="form-control">
+															<option>Girls</option>
+															<option>Round Neck</option>
+															<option>V Neck</option>
+														</select>
+													</div>
+												</div>
+												<div class="ntr">
+													<input type="submit" class="btn btn-success btn-md" style="width:100%"/>
+												</div>
+											</form>
+										</div>
+										<div ng-show="show==3">
+											<form action="" method="POST" id="addS">
+												<div class="ntr">
+													<div class="nth">Due date</div>
+													<div class="ntd" style="position:relative">
+														<input type='text' name="due_date" class="form-control datetimepicker" id='datetimepicker4' ng-model="due_date" placeholder="Due date"/>
+													</div>
+													<script type="text/javascript">
+														$(function () {
+															$('.datetimepicker').datetimepicker();
+														});
+													</script>
+												</div>
+												<div class="ntr">
+													<div class="nth">Location</div>
+													<div class="ntd">
+														<select class="form-control">
+															<option>Auckland</option>
+															<option>London</option>
+															<option>Singapore</option>
+															<option>Sydney</option>
+															<option>Tokyo</option>
+														</select>
+													</div>
+												</div>
+												<div class="ntr">
+													<div class="nth">What type of business card is it</div>
+													<div class="ntd">
+														<select class="form-control">
+															<option>Business 1</option>
+															<option>Business 2</option>
+														</select>
+													</div>
+												</div>
+												<div class="ntr">
+													<div class="nth">Do you have a 90 seconds business cards</div>
+													<div class="ntd"><input type="checkbox" ng-model="hasCard"/></div>
+												</div>
+												<div ng-show="hasCard">
+													<div class="ntr">
+														<div class="nth">Current card deisgn</div>
+														<div class="ntd">
+															<input type="file" name="fileToUpload" id="file" data-filename-placement="inside"/>
+														</div>
+													</div>
+													<div class="ntr">
+														<div class="nth">Do you need any changes done</div>
+														<div class="ntd"><input type="checkbox" ng-model="hasChanges"/></div>
+													</div>
+												</div>
+												<div ng-show="hasChanges || !hasCard">
+													<div class="ntr">
+														<div class="nth">Name</div>
+														<div class="ntd"><input type="text" class="form-control" required placeholder="location" name="location" ng-model="location"/></div>
+													</div>
+													<div class="ntr">
+														<div class="nth">Title</div>
+														<div class="ntd"><input type="text" class="form-control" required placeholder="location" name="location" ng-model="location"/></div>
+													</div>
+													<div class="ntr">
+														<div class="nth">Phone</div>
+														<div class="ntd"><input type="text" class="form-control" required placeholder="location" name="location" ng-model="location"/></div>
+													</div>
+													<div class="ntr">
+														<div class="nth">Email</div>
+														<div class="ntd"><input type="text" class="form-control" required placeholder="location" name="location" ng-model="location"/></div>
+													</div>
+												</div>
+												<div class="ntr">
+													<div class="nth">How many do you need</div>
+													<div class="ntd"><input type="text" class="form-control" required placeholder="location" name="location" ng-model="location"/></div>
+												</div>
+												<div class="ntr">
+													<input type="submit" class="btn btn-success btn-md" style="width:100%"/>
+												</div>
+											</form>
+										</div>
+										
+									</div>
+
+							</div>
+						</div>					
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<!-- Bootstrap core JavaScript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="../js/application.js"></script>
+	
+	<script type="text/javascript">
+		$('input[type=file]').bootstrapFileInput();
+		$('.file-inputs').bootstrapFileInput();
+	</script>
+	<script type="text/javascript">
+		var app = angular.module('myApp', []);
+		app.controller('formCont', function($scope) {
+		    $scope.show= 0;
+		    $scope.hasCard= 0;
+		    $scope.hasChanges= 0;
+		    $scope.block= 0;
+		    $scope.shouldSubmit= 0;
+		    $scope.brand= "";
+		    $scope.due_date= "";
+		    $scope.location= "";
+		    $scope.type_of_banner= "";
+		    $scope.tshirt_design= "";
+		    $scope.size= "";
+		    $scope.already_have_bc= "";
+		    $scope.link_to_curr_cd= "";
+		    $scope.need_changes= "";
+		    $scope.name= "";
+		    $scope.title= "";
+		    $scope.phone= "";
+		    $scope.email= "";
+		    $scope.link_to_hd_photo= "";
+		    $scope.how_many= "";
+		    $scope.style_of_tshirt= "";
+		    $scope.type_of_presentation= "";
+		    $scope.custom_graphics= "";
+		    $scope.folder= "";
+		    $scope.hasFolder= "";
+		    $scope.images_added= "";
+		    $scope.presentation_content= "";
+		});
+	</script>
+	</body>
+</html>
